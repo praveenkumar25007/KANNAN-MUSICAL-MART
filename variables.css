@@ -1,0 +1,148 @@
+/* ==========================================================================
+   KANNAN MUSICAL MART — DESIGN TOKENS
+   BRIGHT LIGHT THEME — Warm cream/ivory background, brass accents, dark text
+   ========================================================================== */
+
+:root {
+  /* ---- Original dark palette (kept for reference & dark mode toggles) ---- */
+  --stage-black: #09080b;
+  --stage-black-soft: #121017;
+  --plum-charcoal: #1e1821;
+  --plum-charcoal-soft: #2a2230;
+
+  /* ---- LIGHT THEME SURFACES (kept for reference) ---- */
+  --ivory: #f5f0e8;               /* bright warm text on dark bg */
+  --ivory-dim: #ddd3bf;           /* secondary text */
+  --ivory-faint: #9b8f7b;         /* muted/tertiary text */
+  
+  /* ---- Dark text for bright backgrounds ---- */
+  --text-dark: #2c2416;           /* dark text on light bg */
+  --text-dark-dim: #5a4c38;       /* secondary dark text */
+  --text-dark-faint: #8a7a63;     /* muted dark text */
+
+  /* ---- Page backgrounds — DARK THEME (matches instruments page) ---- */
+  --page-bg: #09080b;             /* stage black */
+  --page-bg-alt: #121017;         /* stage black soft */
+  --card-bg: #1e1821;             /* plum charcoal */
+  --card-bg-hover: #2a2230;       /* plum charcoal soft */
+  --card-border: rgba(255,255,255,0.08);
+  --nav-bg-light: rgba(9, 8, 11, 0.92);
+
+  /* ---- Brass accents ---- */
+  --brass: #f4c860;               /* brighter brass for better visibility */
+  --brass-bright: #ffd966;        /* hover state */
+  --brass-dim: #e8b860;           /* pressed */
+  --varnish-red: #8b1e2e;
+  --varnish-red-bright: #a8293b;
+  --varnish-red-deep: #5e1420;
+
+  /* ---- Glass effects — dark theme ---- */
+  --glass-fill: rgba(248, 242, 231, 0.06);
+  --glass-fill-strong: rgba(248, 242, 231, 0.12);
+  --glass-border: rgba(212, 170, 58, 0.18);
+  --glass-border-strong: rgba(212, 170, 58, 0.32);
+
+  /* ---- Shadows ---- */
+  --shadow-soft: 0 6px 28px rgba(0, 0, 0, 0.35);
+  --shadow-lifted: 0 16px 48px rgba(0, 0, 0, 0.5);
+  --shadow-brass-glow: 0 0 0 1px rgba(184,134,11, 0.28), 0 0 24px rgba(184,134,11, 0.14);
+  --shadow-red-glow: 0 0 0 1px rgba(139, 30, 46, 0.3), 0 0 24px rgba(139, 30, 46, 0.16);
+
+  /* ---- Type ---- */
+  --font-display: "Playfair Display", "Georgia", serif;
+  --font-body: "Poppins", "Segoe UI", sans-serif;
+
+  --fs-2xs: 0.6875rem;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.25rem;
+  --fs-3xl: 3rem;
+  --fs-4xl: 4rem;
+  --fs-5xl: 5.25rem;
+
+  --tracking-wide: 0.14em;
+  --tracking-widest: 0.22em;
+
+  /* ---- Spacing ---- */
+  --sp-2xs: 0.4rem;
+  --sp-xs: 0.75rem;
+  --sp-sm: 1.25rem;
+  --sp-md: 2rem;
+  --sp-lg: 3.25rem;
+  --sp-xl: 5.25rem;
+  --sp-2xl: 8.5rem;
+
+  /* ---- Radius ---- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* ---- Motion ---- */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 220ms;
+  --dur-med: 420ms;
+  --dur-slow: 720ms;
+
+  /* ---- Layout ---- */
+  --container-max: 1240px;
+  --nav-height: 84px;
+  --nav-height-scrolled: 68px;
+}
+
+/* ---- EXPLICIT DARK MODE ---- */
+[data-mode="dark"] {
+  --page-bg: #09080b;
+  --page-bg-alt: #121017;
+  --card-bg: #1e1821;
+  --card-bg-hover: #2a2230;
+  --card-border: rgba(255,255,255,0.08);
+  --nav-bg-light: rgba(9, 8, 11, 0.92);
+  --ivory: #f5f0e8;
+  --ivory-dim: #ddd3bf;
+  --ivory-faint: #9b8f7b;
+  --glass-fill: rgba(248, 242, 231, 0.06);
+  --glass-fill-strong: rgba(248, 242, 231, 0.12);
+  --glass-border: rgba(212, 170, 58, 0.18);
+  --glass-border-strong: rgba(212, 170, 58, 0.32);
+  --shadow-soft: 0 6px 28px rgba(0, 0, 0, 0.35);
+  --shadow-lifted: 0 16px 48px rgba(0, 0, 0, 0.5);
+  --shadow-brass-glow: 0 0 0 1px rgba(184,134,11, 0.28), 0 0 24px rgba(184,134,11, 0.14);
+}
+
+/* ---- LIGHT MODE OVERRIDE ---- */
+[data-mode="light"] {
+  --page-bg: #f5f0e8;
+  --page-bg-alt: #ede7d9;
+  --card-bg: #ffffff;
+  --card-bg-hover: #f8f4ee;
+  --card-border: rgba(0,0,0,0.08);
+  --nav-bg-light: rgba(245, 240, 232, 0.95);
+  --ivory: #1a1410;
+  --ivory-dim: #4a3f2f;
+  --ivory-faint: #7a6a55;
+  --glass-fill: rgba(255,255,255,0.55);
+  --glass-fill-strong: rgba(255,255,255,0.85);
+  --glass-border: rgba(0,0,0,0.08);
+  --glass-border-strong: rgba(0,0,0,0.16);
+  --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lifted: 0 12px 40px rgba(0,0,0,0.14);
+  --shadow-brass-glow: 0 0 0 1px rgba(184,134,11,0.2), 0 0 20px rgba(184,134,11,0.1);
+}
+
+/* Respect reduced motion system-wide */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

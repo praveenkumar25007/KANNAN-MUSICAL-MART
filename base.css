@@ -1,0 +1,235 @@
+/* ==========================================================================
+   BASE / RESET — BRIGHT LIGHT THEME
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  background: var(--page-bg, #09080b);
+  color: var(--ivory, #f5f0e8);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Subtle warm texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(212,170,58,0.04), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 90% 10%, rgba(139,30,46,0.03), transparent 50%);
+  opacity: 0.8;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* Focus styles */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--sp-md);
+  position: relative;
+  z-index: 1;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  font-family: var(--font-body);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--brass);
+}
+
+section {
+  position: relative;
+  z-index: 1;
+}
+
+.page-highlights {
+  padding-block: calc(var(--sp-xl) * 0.5) var(--sp-xl);
+  position: relative;
+  z-index: 2;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-md);
+  margin-top: calc(-1 * var(--sp-lg));
+}
+
+.highlight-card {
+  padding: var(--sp-md);
+  border: 1px solid var(--card-border, rgba(180,150,80,0.2));
+  background: var(--card-bg, #ffffff);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius-md);
+}
+
+.highlight-card .highlight-icon {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(184, 134, 11, 0.10);
+  color: var(--brass);
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.highlight-card h3 {
+  font-size: var(--fs-lg);
+  color: var(--ivory);
+  margin-bottom: 0.45rem;
+}
+
+.highlight-card p {
+  color: var(--ivory-dim);
+  font-size: var(--fs-sm);
+}
+
+/* Light mode card backgrounds */
+[data-mode="light"] .highlight-card {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.08);
+}
+
+[data-mode="light"] body::before {
+  opacity: 0.3;
+}
+
+[data-mode="light"] .page-loader {
+  background: #f5f0e8;
+}
+
+[data-mode="light"] ::selection {
+  color: #fff;
+}
+
+[data-mode="light"] ::-webkit-scrollbar-track {
+  background: #ede7d9;
+}
+
+[data-mode="light"] ::-webkit-scrollbar-thumb {
+  border-color: #ede7d9;
+}
+
+::selection {
+  background: var(--brass);
+  color: #fff;
+}
+
+/* Scrollbar — warm brass on cream */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--page-bg-alt, #f5ede0);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brass-dim);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--page-bg-alt, #f5ede0);
+}
+
+@media (max-width: 720px) {
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Kannan Musical Mart</title>
+  <meta name="description" content="Get in touch with Kannan Musical Mart for instrument enquiries, repairs, and store visits." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="variables.css" />
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="components.css" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+  <div class="page-loader" aria-hidden="true">
+    <div class="loader-mark">
+      <svg class="loader-wave" viewBox="0 0 140 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 24 Q 10 4, 20 24 T 40 24 T 60 24 T 80 24 T 100 24 T 120 24 T 140 24" />
+      </svg>
+      <span class="loader-text">Kannan Musical Mart</span>
+    </div>
+  </div>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <div class="nav-backdrop" id="nav-backdrop"></div>
+
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <svg class="nav-brand-mark" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <circle cx="17" cy="17" r="15" stroke-width="1.4" />
+          <path d="M10 21c1.5-4.5 3-7.5 7-7.5s5.5 3 7 7.5" stroke-width="1.4" stroke-linecap="round" />
+        </svg>
+        <span data-i18n="nav.brand">Kannan Musical Mart</span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="nav-links">
+          <li class="nav-drawer-header">
+            <span class="nav-drawer-title" data-i18n="nav.brand">Kannan Musical Mart</span>
+            <button class="nav-close-btn" aria-label="Close menu">&times;</button>
+          </li>
+          <li><a href="index.html"><span class="nav-link-icon">🏠</span><span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="about.html"><span class="nav-link-icon">ℹ️</span><span data-i18n="nav.about">About</span></a></li>
+          <li><a href="gallery.html"><span class="nav-link-icon">🎸</span><span data-i18n="nav.instruments">Instruments</span></a></li>
+          <li><a href="contact.html" aria-current="page"><span class="nav-link-icon">📞</span><span data-i18n="nav.contact">Contact</span></a></li>
+          <li><a href="contact.html" class="nav-drawer-cta" data-i18n="common.contactUs">Contact Us &rarr;</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Dark/Light Mode Toggle -->
+        <button class="mode-toggle-btn" id="mode-toggle" aria-label="Toggle dark/light mode" title="Toggle Theme Mode">
+          <span class="mode-icon mode-icon-dark">&#127769;</span>
+          <span class="mode-icon mode-icon-light">&#9728;</span>
+          <span class="mode-label" id="mode-label">Dark</span>
+        </button>
+
+        <!-- Music Player Widget -->
+        <div class="music-player-widget" id="music-player-widget">
+          <button class="music-toggle-btn" id="music-toggle" aria-label="Toggle Tamil background music" title="Tamil Music Player">
+            <span class="music-icon">&#127925;</span>
+            <span class="music-label">Music</span>
+          </button>
+          <div class="music-panel" id="music-panel">
+            <div class="music-panel-header">
+              <span class="music-panel-title">&#127926; Tamil Classical Music</span>
+              <button class="music-close-btn" id="music-panel-close" aria-label="Close music panel">&#10005;</button>
+            </div>
+            <div class="music-now-playing" id="music-now-playing">
+              <div class="music-disk" id="music-disk">
+                <span class="music-disk-note">&#9836;</span>
+              </div>
+              <div class="music-info">
+                <div class="music-track-name" id="music-track-name">Loading...</div>
+                <div class="music-track-artist" id="music-track-artist">Tamil Classical</div>
+              </div>
+            </div>
+            <div class="music-controls">
+              <button class="music-ctrl-btn" id="music-prev" aria-label="Previous track">&#9194;</button>
+              <button class="music-ctrl-btn music-play-btn" id="music-play-pause" aria-label="Play/Pause">&#9654;</button>
+              <button class="music-ctrl-btn" id="music-next" aria-label="Next track">&#9193;</button>
+            </div>
+            <div class="music-volume-row">
+              <span>&#128264;</span>
+              <input type="range" class="music-volume" id="music-volume" min="0" max="100" value="40" aria-label="Volume" />
+              <span>&#128266;</span>
+            </div>
+            <div class="music-track-list" id="music-track-list"></div>
+          </div>
+        </div>
+        <div class="theme-switch">
+          <button class="theme-switch-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change website theme color" title="Change Theme Color">
+            <span class="theme-swatch-icon">🎨</span>
+            <span class="theme-label-text" data-current-theme-label>Theme</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="theme-menu" role="listbox">
+            <div class="theme-menu-title">Theme Presets</div>
+            <button class="theme-option is-active" role="option" data-theme="brass">
+              <span class="theme-swatch" style="background: linear-gradient(135deg, #d4aa3a 50%, #8b1e2e 50%);"></span>
+              <span class="theme-name">Brass & Varnish</span>
+            </button>
+            <button class="theme-option" role="option" data-theme="emerald">
+              <span class="theme-swatch" style="background: linear-gradient(135deg, #e5c158 50%, #0f523b 50%);"></span>
+              <span class="theme-name">Emerald Gold</span>
+            </button>
+            <button class="theme-option" role="option" data-theme="sapphire">
+              <span class="theme-swatch" style="background: linear-gradient(135deg, #38bdf8 50%, #1e3a8a 50%);"></span>
+              <span class="theme-name">Royal Sapphire</span>
+            </button>
+            <button class="theme-option" role="option" data-theme="crimson">
+              <span class="theme-swatch" style="background: linear-gradient(135deg, #fb7185 50%, #9f1239 50%);"></span>
+              <span class="theme-name">Crimson Velvet</span>
+            </button>
+            <button class="theme-option" role="option" data-theme="purple">
+              <span class="theme-swatch" style="background: linear-gradient(135deg, #facc15 50%, #6b21a8 50%);"></span>
+              <span class="theme-name">Amethyst Twilight</span>
+            </button>
+            <button class="theme-option" role="option" data-theme="platinum">
+              <span class="theme-swatch" style="background: linear-gradient(135deg, #cbd5e1 50%, #334155 50%);"></span>
+              <span class="theme-name">Platinum Onyx</span>
+            </button>
+            <div class="theme-custom-divider"></div>
+            <div class="theme-custom-picker">
+              <label for="theme-color-input" class="theme-custom-label">Custom Accent</label>
+              <input type="color" id="theme-color-input" value="#d4aa3a" title="Pick custom accent color" />
+            </div>
+          </div>
+        </div>
+
+        <div class="lang-switch">
+          <button class="lang-switch-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language">
+            <span data-current-lang-flag>🇬🇧</span>
+            <span data-current-lang-label>English</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu" role="listbox">
+            <button class="lang-option" role="option" data-lang-option="en" aria-checked="true">
+              <span class="lang-flag">🇬🇧</span> English
+            </button>
+            <button class="lang-option" role="option" data-lang-option="ta" aria-checked="false">
+              <span class="lang-flag">🇮🇳</span> தமிழ்
+            </button>
+          </div>
+        </div>
+
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero contact-hero">
+      <div class="container">
+        <span class="eyebrow">Visit or write to us</span>
+        <h1>Let’s make your next music purchase feel effortless.</h1>
+        <p>Drop by our Sowcarpet showroom for instrument guidance, repairs, school orders, or a quick visit to try your next favourite instrument.</p>
+      </div>
+    </section>
+
+    <section class="container contact-main">
+      <div class="contact-grid">
+        <div class="info-stack">
+          <article class="glass-card info-card">
+            <div class="info-card-heading">Store details</div>
+            <div class="info-row">
+              <div class="info-row-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21s7-5.7 7-12a7 7 0 10-14 0c0 6.3 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              </div>
+              <div>
+                <div class="info-row-label">Address</div>
+                <div class="info-row-value" data-store-address></div>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-row-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+              </div>
+              <div>
+                <div class="info-row-label">Phone</div>
+                <div class="info-row-value"><a href="tel:+919840148769" data-store-phone-mobile-href><span data-store-phone-mobile></span></a></div>
+                <div class="info-row-value"><a href="tel:04425299827" data-store-phone-landline-href><span data-store-phone-landline></span></a></div>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-row-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="M4 8l8 6 8-6"/></svg>
+              </div>
+              <div>
+                <div class="info-row-label">Email</div>
+                <div class="info-row-value"><a href="mailto:kannanmusicalmart@yahoo.com" data-store-email-href><span data-store-email></span></a></div>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-row-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 7v5l3 3"/><circle cx="12" cy="12" r="8"/></svg>
+              </div>
+              <div>
+                <div class="info-row-label">Business hours</div>
+                <div class="info-row-value">Mon – Sat: 10:00 AM – 8:00 PM</div>
+                <div class="info-row-value">Sunday: Closed</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass-card status-card">
+            <div class="status-badge" data-store-status-badge>
+              <span data-status-text>Open Now</span>
+            </div>
+            <div class="status-clock-row">
+              <div>
+                <div class="status-clock-value"><span data-current-time>--:--</span></div>
+                <div class="status-clock-label">Current time</div>
+              </div>
+              <div>
+                <div class="status-clock-value" data-store-countdown>—</div>
+                <div class="status-clock-label" data-store-countdown-label>Closes in</div>
+              </div>
+            </div>
+            <div class="status-countdown">
+              <span data-store-next-label>Next opening</span>: <strong data-store-next-time>—</strong>
+            </div>
+          </article>
+        </div>
+
+        <div class="glass-card contact-form-card">
+          <div class="info-card-heading">Send an enquiry</div>
+          <form id="enquiry-form" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="field-name">Name</label>
+                <input id="field-name" name="name" type="text" />
+                <div class="form-error" aria-live="polite"></div>
+              </div>
+              <div class="form-field">
+                <label for="field-email">Email</label>
+                <input id="field-email" name="email" type="email" />
+                <div class="form-error" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="field-phone">Phone</label>
+                <input id="field-phone" name="phone" type="tel" />
+                <div class="form-error" aria-live="polite"></div>
+              </div>
+              <div class="form-field">
+                <label for="field-subject">Subject</label>
+                <select id="field-subject" name="subject">
+                  <option value="">Choose a subject</option>
+                  <option value="Instrument Enquiry">Instrument Enquiry</option>
+                  <option value="Repair Service">Repair Service</option>
+                  <option value="Store Visit">Store Visit</option>
+                </select>
+                <div class="form-error" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="field-message">Message</label>
+              <textarea id="field-message" name="message" rows="5"></textarea>
+              <div class="form-error" aria-live="polite"></div>
+            </div>
+
+            <div class="form-field">
+              <label for="field-attachment">Attachment <span style="font-size: 0.85em; opacity: 0.7;">(optional)</span></label>
+              <input id="field-attachment" name="attachment" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.mp3,.wav" />
+              <div data-attachment-name class="attachment-name" style="font-size: 0.9em; margin-top: 0.5rem; opacity: 0.7; color: var(--text-muted);"></div>
+              <div class="form-error" aria-live="polite"></div>
+            </div>
+
+            <div class="captcha-row">
+              <label for="field-captcha">Captcha</label>
+              <span class="captcha-question" data-captcha-question></span>
+              <input id="field-captcha" name="captcha" type="number" inputmode="numeric" />
+              <button class="captcha-refresh-btn" type="button" data-captcha-refresh aria-label="Refresh captcha">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 10-2.9 6.3"/><path d="M21 3v6h-6"/></svg>
+              </button>
+              <div class="form-error" aria-live="polite"></div>
+            </div>
+
+            <input id="field-hp" name="company" type="text" tabindex="-1" autocomplete="off" class="hp-field" />
+            <button type="submit" class="btn btn-primary">Send Enquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="container map-section">
+      <div class="section-heading center">
+        <span class="eyebrow">Find us</span>
+        <h2>Visit the heart of Chennai’s music street</h2>
+      </div>
+      <div class="map-layout">
+        <div class="map-embed-wrap">
+          <iframe data-map-embed title="Map to Kannan Musical Mart" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="glass-card location-card">
+          <div class="location-card-header">
+            <div class="location-pin">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21s6-6.2 6-10a6 6 0 10-12 0c0 3.8 6 10 6 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
+            </div>
+            <div>
+              <div class="location-card-title">Kannan Musical Mart</div>
+              <div class="info-row-value">Mint Street • Sowcarpet</div>
+            </div>
+          </div>
+          <div class="location-address-block">
+            <strong>New No. 274, Old No. 380, Mint Street</strong><br />
+            Near Sowcarpet Jain Temple<br />
+            Sowcarpet, Chennai, Tamil Nadu – 600001
+          </div>
+          <div class="location-meta-row">
+            <span>Walk-ins welcome</span>
+            <span>Chennai • Tamil Nadu</span>
+          </div>
+          <ul class="landmarks-list">
+            <li>Close to Sowcarpet Jain Temple and the busy Mint Street market area.</li>
+            <li>Easy for customers traveling from Central Chennai and surrounding localities.</li>
+            <li>Ideal for instrument browsing, repairs, and quick store visits.</li>
+          </ul>
+          <div class="location-actions">
+            <button class="btn btn-primary" type="button" data-copy-address-btn>Copy address</button>
+            <button class="btn btn-outline" type="button" data-share-location-btn>Share location</button>
+            <a class="btn btn-outline" href="#" data-directions-link target="_blank" rel="noopener noreferrer">Get directions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container route-section">
+      <div class="section-heading center">
+        <span class="eyebrow">How to reach</span>
+        <h2>Simple routes from every part of the city</h2>
+      </div>
+      <div class="route-grid">
+        <article class="glass-card route-card">
+          <span class="route-emoji">🚗</span>
+          <h3>By Car</h3>
+          <p>Easy access from Central Chennai and nearby main roads.</p>
+        </article>
+        <article class="glass-card route-card">
+          <span class="route-emoji">🛵</span>
+          <h3>By Bike</h3>
+          <p>Quick arrival from the surrounding streets and market lanes.</p>
+        </article>
+        <article class="glass-card route-card">
+          <span class="route-emoji">🚇</span>
+          <h3>By Metro</h3>
+          <p>Convenient for visitors coming via the nearby transit corridors.</p>
+        </article>
+        <article class="glass-card route-card">
+          <span class="route-emoji">🚶</span>
+          <h3>On Foot</h3>
+          <p>Perfect for quick visits around Sowcarpet and the local market area.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container faq-section">
+      <div class="section-heading center">
+        <span class="eyebrow">Good to know</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            Can I try an instrument before buying?
+            <span class="faq-question-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>Yes — walk in and let our team help you explore options in your budget and skill level.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            Do you repair instruments bought elsewhere?
+            <span class="faq-question-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>Yes, we provide repair and setup support for many instruments beyond those purchased from us.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            Do you support school orders?
+            <span class="faq-question-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>Absolutely — we gladly assist schools, institutions and music academies with bulk requirements.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Kannan Musical Mart</p>
+    </div>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+  <script src="location.js"></script>
+  <script src="store-hours.js"></script>
+  <script src="enquiry-form.js"></script>
+  <!-- ============ MOBILE BOTTOM STICKY NAV ============ -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="index.html" class="mobile-bottom-link">
+      <span class="nav-icon">🏠</span>
+      <span data-i18n="nav.home">Home</span>
+    </a>
+    <a href="about.html" class="mobile-bottom-link">
+      <span class="nav-icon">ℹ️</span>
+      <span data-i18n="nav.about">About</span>
+    </a>
+    <a href="gallery.html" class="mobile-bottom-link">
+      <span class="nav-icon">🎸</span>
+      <span data-i18n="nav.instruments">Instruments</span>
+    </a>
+    <a href="contact.html" class="mobile-bottom-link">
+      <span class="nav-icon">📞</span>
+      <span data-i18n="nav.contact">Contact</span>
+    </a>
+  </nav>
+
+</body>
+</html>

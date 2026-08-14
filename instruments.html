@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instruments — Kannan Musical Mart</title>
+  <meta name="description" content="Browse guitars, violins, harmoniums, drum sets, tabla, flutes, microphones, and accessories at Kannan Musical Mart, Chennai." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%230b0a0c' stroke='%23c9a24b' stroke-width='1.5'/%3E%3Cpath d='M7 15c1-3 2-5 5-5s4 2 5 5' stroke='%23c9a24b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+  <link rel="stylesheet" href="variables.css" />
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="components.css" />
+  <link rel="stylesheet" href="instruments.css" />
+</head>
+<body>
+
+  <div class="page-loader" aria-hidden="true">
+    <div class="loader-mark">
+      <svg class="loader-wave" viewBox="0 0 140 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 24 Q 10 4, 20 24 T 40 24 T 60 24 T 80 24 T 100 24 T 120 24 T 140 24" />
+      </svg>
+      <span class="loader-text">Kannan Musical Mart</span>
+    </div>
+  </div>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <div class="nav-backdrop" id="nav-backdrop"></div>
+
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <svg class="nav-brand-mark" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <circle cx="17" cy="17" r="15" stroke-width="1.4" />
+          <path d="M10 21c1.5-4.5 3-7.5 7-7.5s5.5 3 7 7.5" stroke-width="1.4" stroke-linecap="round" />
+        </svg>
+        <span data-i18n="nav.brand">Kannan Musical Mart</span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="nav-links">
+          <li class="nav-drawer-header">
+            <span class="nav-drawer-title" data-i18n="nav.brand">Kannan Musical Mart</span>
+            <button class="nav-close-btn" aria-label="Close menu">&times;</button>
+          </li>
+          <li><a href="index.html"><span class="nav-link-icon">🏠</span><span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="about.html"><span class="nav-link-icon">ℹ️</span><span data-i18n="nav.about">About</span></a></li>
+          <li><a href="gallery.html" aria-current="page"><span class="nav-link-icon">🎸</span><span data-i18n="nav.instruments">Instruments</span></a></li>
+          <li><a href="contact.html"><span class="nav-link-icon">📞</span><span data-i18n="nav.contact">Contact</span></a></li>
+          <li><a href="contact.html" class="nav-drawer-cta" data-i18n="common.contactUs">Contact Us &rarr;</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Dark/Light Mode Toggle -->
+        <button class="mode-toggle-btn" id="mode-toggle" aria-label="Toggle dark/light mode" title="Toggle Theme Mode">
+          <span class="mode-icon mode-icon-dark">&#127769;</span>
+          <span class="mode-icon mode-icon-light">&#9728;</span>
+          <span class="mode-label" id="mode-label">Dark</span>
+        </button>
+
+        <!-- Music Player Widget -->
+        <div class="music-player-widget" id="music-player-widget">
+          <button class="music-toggle-btn" id="music-toggle" aria-label="Toggle Tamil background music" title="Tamil Music Player">
+            <span class="music-icon">&#127925;</span>
+            <span class="music-label">Music</span>
+          </button>
+          <div class="music-panel" id="music-panel">
+            <div class="music-panel-header">
+              <span class="music-panel-title">&#127926; Tamil Classical Music</span>
+              <button class="music-close-btn" id="music-panel-close" aria-label="Close music panel">&#10005;</button>
+            </div>
+            <div class="music-now-playing" id="music-now-playing">
+              <div class="music-disk" id="music-disk">
+                <span class="music-disk-note">&#9836;</span>
+              </div>
+              <div class="music-info">
+                <div class="music-track-name" id="music-track-name">Loading...</div>
+                <div class="music-track-artist" id="music-track-artist">Tamil Classical</div>
+              </div>
+            </div>
+            <div class="music-controls">
+              <button class="music-ctrl-btn" id="music-prev" aria-label="Previous track">&#9194;</button>
+              <button class="music-ctrl-btn music-play-btn" id="music-play-pause" aria-label="Play/Pause">&#9654;</button>
+              <button class="music-ctrl-btn" id="music-next" aria-label="Next track">&#9193;</button>
+            </div>
+            <div class="music-volume-row">
+              <span>&#128264;</span>
+              <input type="range" class="music-volume" id="music-volume" min="0" max="100" value="40" aria-label="Volume" />
+              <span>&#128266;</span>
+            </div>
+            <div class="music-track-list" id="music-track-list"></div>
+          </div>
+        </div>
+        <div class="theme-switch">
+          <button class="theme-switch-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change website theme color" title="Change Theme Color">
+            <span class="theme-swatch-icon">🎨</span>
+            <span class="theme-label-text" data-current-theme-label>Theme</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="theme-menu" role="listbox">
+            <div class="theme-menu-title">Theme Presets</div>
+            <button class="theme-option is-active" role="option" data-theme="brass">
+              <span class="theme-swatch" style="background: linear-gradient(135deg, #d4aa3a 50%, #8b1e2e 50%);"></span>
+              <span class="theme-name">Brass & Varnish</span>
+            </button>
+            <button class="theme-option" role="option" data-theme="emerald">
+              <span class="theme-swatch" style="background: linear-gradient(135deg, #e5c158 50%, #0f523b 50%);"></span>
+              <span class="theme-name">Emerald Gold</span>
+            </button>
+            <button class="theme-option" role="option" data-theme="sapphire">
+              <span class="theme-swatch" style="background: linear-gradient(135deg, #38bdf8 50%, #1e3a8a 50%);"></span>
+              <span class="theme-name">Royal Sapphire</span>
+            </button>
+            <button class="theme-option" role="option" data-theme="crimson">
+              <span class="theme-swatch" style="background: linear-gradient(135deg, #fb7185 50%, #9f1239 50%);"></span>
+              <span class="theme-name">Crimson Velvet</span>
+            </button>
+            <button class="theme-option" role="option" data-theme="purple">
+              <span class="theme-swatch" style="background: linear-gradient(135deg, #facc15 50%, #6b21a8 50%);"></span>
+              <span class="theme-name">Amethyst Twilight</span>
+            </button>
+            <button class="theme-option" role="option" data-theme="platinum">
+              <span class="theme-swatch" style="background: linear-gradient(135deg, #cbd5e1 50%, #334155 50%);"></span>
+              <span class="theme-name">Platinum Onyx</span>
+            </button>
+            <div class="theme-custom-divider"></div>
+            <div class="theme-custom-picker">
+              <label for="theme-color-input" class="theme-custom-label">Custom Accent</label>
+              <input type="color" id="theme-color-input" value="#d4aa3a" title="Pick custom accent color" />
+            </div>
+          </div>
+        </div>
+
+        <div class="lang-switch">
+          <button class="lang-switch-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language">
+            <span data-current-lang-flag>🇬🇧</span>
+            <span data-current-lang-label>English</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu" role="listbox">
+            <button class="lang-option" role="option" data-lang-option="en" aria-checked="true">
+              <span class="lang-flag">🇬🇧</span> English
+            </button>
+            <button class="lang-option" role="option" data-lang-option="ta" aria-checked="false">
+              <span class="lang-flag">🇮🇳</span> தமிழ்
+            </button>
+          </div>
+        </div>
+
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="instruments-intro">
+      <div class="container">
+        <span class="eyebrow" data-i18n="instruments.heroEyebrow">The Collection</span>
+        <h1 data-i18n="instruments.heroHeadline">Instruments Worth Falling in Love With</h1>
+        <p data-i18n="instruments.heroSubtitle">Browse our range of Indian and Western instruments. Visit the store for pricing and to try before you buy.</p>
+
+        <!-- Hero Search Bar -->
+        <div class="hero-search-wrapper">
+          <div class="hero-search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.2-4.2"/></svg>
+            <input id="hero-search" type="search" placeholder="Search instruments (e.g. Harmonium, Flute, Bangoes, Tabla, Guitar)..." aria-label="Search instruments" />
+            <button class="search-clear-btn" id="search-clear-btn" type="button" aria-label="Clear search" hidden>✕</button>
+            <span class="search-kbd-badge" title="Press / to search">/</span>
+          </div>
+          <div class="hero-search-pills">
+            <span class="pills-label">Popular Searches:</span>
+            <button type="button" class="search-pill" data-query="Harmonium">🪗 Harmonium</button>
+            <button type="button" class="search-pill" data-query="Flute">🪈 Flute</button>
+            <button type="button" class="search-pill" data-query="Bangoes">🥁 Bangoes</button>
+            <button type="button" class="search-pill" data-query="Guitar">🎸 Guitar</button>
+            <button type="button" class="search-pill" data-query="Violin">🎻 Violin</button>
+            <button type="button" class="search-pill" data-query="Tabla">🥁 Tabla</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-highlights">
+      <div class="container">
+        <div class="highlights-grid">
+          <article class="glass-card highlight-card">
+            <div class="highlight-icon">🎶</div>
+            <h3>Wide range</h3>
+            <p>From classical to contemporary, our floor brings together Indian and Western instruments in one place.</p>
+          </article>
+          <article class="glass-card highlight-card">
+            <div class="highlight-icon">👩‍🏫</div>
+            <h3>Try before you buy</h3>
+            <p>Visit the showroom for hands-on guidance and expert recommendations for your practice or performance needs.</p>
+          </article>
+          <article class="glass-card highlight-card">
+            <div class="highlight-icon">🏫</div>
+            <h3>School & bulk orders</h3>
+            <p>We support institutions, academies and music programs with dependable options and helpful service.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="inventory-section">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <span class="eyebrow">Store inventory</span>
+          <h2>Search our complete instrument collection</h2>
+          <p>Browse our drums, flutes, percussion, and wind instruments by name or category.</p>
+        </div>
+
+        <div class="inventory-toolbar reveal">
+          <label class="inventory-search" for="inventory-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.2-4.2"/></svg>
+            <input id="inventory-search" type="search" placeholder="Search instrument name or category..." />
+            <button class="search-clear-btn" id="inventory-search-clear" type="button" aria-label="Clear search" hidden>✕</button>
+          </label>
+          <div class="inventory-count" id="inventory-count">Showing 0 instruments</div>
+        </div>
+
+        <div class="inventory-grid" id="inventory-grid"></div>
+        <div class="inventory-empty" id="inventory-empty" hidden>No instruments match your search.</div>
+      </div>
+    </section>
+
+    <!-- ============ FILTER TABS ============ -->
+    <div class="filter-bar" role="tablist" aria-label="Filter instruments by category">
+      <button class="filter-tab is-active" data-filter="all" role="tab" aria-selected="true" data-i18n="instruments.filterAll">All</button>
+      <button class="filter-tab" data-filter="strings" role="tab" aria-selected="false" data-i18n="instruments.filterStrings">Strings</button>
+      <button class="filter-tab" data-filter="keys" role="tab" aria-selected="false" data-i18n="instruments.filterKeys">Harmoniums</button>
+      <button class="filter-tab" data-filter="percussion" role="tab" aria-selected="false" data-i18n="instruments.filterPercussion">Percussion</button>
+      <button class="filter-tab" data-filter="wind" role="tab" aria-selected="false" data-i18n="instruments.filterWind">Wind</button>
+      <button class="filter-tab" data-filter="audio" role="tab" aria-selected="false" data-i18n="instruments.filterAudio">Audio</button>
+    </div>
+
+    <!-- ============ PRODUCT GRID ============ -->
+    <section class="products-section">
+      <div class="container">
+        <div class="products-grid">
+
+          <article class="glass-card product-card reveal" data-category="strings" id="guitar">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=800&auto=format&fit=crop" alt="Acoustic guitar" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <h3 data-i18n="instruments.guitarName">Guitar</h3>
+              <p data-i18n="instruments.guitarDesc">From gentle acoustic strums to electric solos, our guitar range covers beginners through stage-ready players.</p>
+              <a href="contact.html" class="btn btn-outline btn-sm" data-i18n="common.learnMore">Learn More</a>
+            </div>
+          </article>
+
+
+          <article class="glass-card product-card reveal reveal-delay-2" data-category="keys" id="harmonium">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1621368286550-f54551f39b91?q=80&w=800&auto=format&fit=crop" alt="Harmonium" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <h3 data-i18n="instruments.harmoniumName">Harmonium</h3>
+              <p data-i18n="instruments.harmoniumDesc">The steady, breathing heart of Indian classical and devotional music, built for years of daily riyaz.</p>
+              <a href="contact.html" class="btn btn-outline btn-sm" data-i18n="common.learnMore">Learn More</a>
+            </div>
+          </article>
+
+          <article class="glass-card product-card reveal reveal-delay-3" data-category="strings" id="violin">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1612225330812-01a9c6b355ec?q=80&w=800&auto=format&fit=crop" alt="Violin" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <h3 data-i18n="instruments.violinName">Violin</h3>
+              <p data-i18n="instruments.violinDesc">Carefully set up for a warm, resonant tone, whether you play Carnatic or Western classical.</p>
+              <a href="contact.html" class="btn btn-outline btn-sm" data-i18n="common.learnMore">Learn More</a>
+            </div>
+          </article>
+
+          <article class="glass-card product-card reveal reveal-delay-4" data-category="percussion" id="drums">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?q=80&w=800&auto=format&fit=crop" alt="Drum set" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <h3 data-i18n="instruments.drumsName">Drum Set</h3>
+              <p data-i18n="instruments.drumsDesc">Full kits with balanced hardware, built to hold a steady beat night after night.</p>
+              <a href="contact.html" class="btn btn-outline btn-sm" data-i18n="common.learnMore">Learn More</a>
+            </div>
+          </article>
+
+          <article class="glass-card product-card reveal reveal-delay-5" data-category="percussion" id="tabla">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1583225214464-9296029427aa?q=80&w=800&auto=format&fit=crop" alt="Tabla" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <h3 data-i18n="instruments.tablaName">Tabla</h3>
+              <p data-i18n="instruments.tablaDesc">Hand-selected pairs with the depth and clarity that serious practice demands.</p>
+              <a href="contact.html" class="btn btn-outline btn-sm" data-i18n="common.learnMore">Learn More</a>
+            </div>
+          </article>
+
+          <article class="glass-card product-card reveal reveal-delay-6" data-category="wind" id="flute">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1621368286547-3fb2f4d1ea5d?q=80&w=800&auto=format&fit=crop" alt="Flute" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <h3 data-i18n="instruments.fluteName">Flute</h3>
+              <p data-i18n="instruments.fluteDesc">Light, responsive bansuris and Western flutes for players of every level.</p>
+              <a href="contact.html" class="btn btn-outline btn-sm" data-i18n="common.learnMore">Learn More</a>
+            </div>
+          </article>
+
+          <article class="glass-card product-card reveal reveal-delay-7" data-category="audio" id="microphone">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop" alt="Microphone" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <h3 data-i18n="instruments.micName">Microphone</h3>
+              <p data-i18n="instruments.micDesc">Reliable vocal and instrument mics for rehearsal rooms, stages, and studios.</p>
+              <a href="contact.html" class="btn btn-outline btn-sm" data-i18n="common.learnMore">Learn More</a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="price-note" data-i18n="instruments.priceNote">Visit the store or contact us for current pricing and availability.</p>
+      </div>
+    </section>
+
+    <!-- ============ ACCESSORIES ============ -->
+    <section class="accessories-section">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <span class="eyebrow" data-i18n="instruments.accessoriesEyebrow">Don't Forget</span>
+          <h2 data-i18n="instruments.accessoriesHeading">Accessories</h2>
+        </div>
+
+        <div class="accessories-grid">
+          <div class="glass-card accessory-card reveal reveal-delay-1">
+            <div class="accessory-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M4 12h16M4 8h16M4 16h16"/></svg></div>
+            <h4 data-i18n="instruments.accStrings">Guitar Strings</h4>
+          </div>
+          <div class="glass-card accessory-card reveal reveal-delay-2">
+            <div class="accessory-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 9-7 9-7-9z"/></svg></div>
+            <h4 data-i18n="instruments.accPicks">Picks</h4>
+          </div>
+          <div class="glass-card accessory-card reveal reveal-delay-3">
+            <div class="accessory-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l7-14M20 20l-7-14"/><circle cx="11" cy="5" r="1.5" fill="currentColor" stroke="none"/><circle cx="13" cy="5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+            <h4 data-i18n="instruments.accSticks">Drum Sticks</h4>
+          </div>
+          <div class="glass-card accessory-card reveal reveal-delay-4">
+            <div class="accessory-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20V10l6-6 6 6v10"/><path d="M9 20v-6h6v6"/></svg></div>
+            <h4 data-i18n="instruments.accStand">Instrument Stand</h4>
+          </div>
+          <div class="glass-card accessory-card reveal reveal-delay-5">
+            <div class="accessory-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="6" rx="2"/></svg></div>
+            <h4 data-i18n="instruments.accCapo">Capo</h4>
+          </div>
+          <div class="glass-card accessory-card reveal reveal-delay-6">
+            <div class="accessory-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11a2 2 0 012 2v14H6a2 2 0 01-2-2z"/><path d="M4 4v14a2 2 0 002 2h11"/></svg></div>
+            <h4 data-i18n="instruments.accBooks">Music Books</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <svg class="nav-brand-mark" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" fill="none">
+              <circle cx="17" cy="17" r="15" stroke-width="1.4" />
+              <path d="M10 21c1.5-4.5 3-7.5 7-7.5s5.5 3 7 7.5" stroke-width="1.4" stroke-linecap="round" />
+            </svg>
+            <span data-i18n="nav.brand">Kannan Musical Mart</span>
+          </a>
+          <p data-i18n="common.footerTagline">Chennai's trusted address for musical instruments, honest advice, and after-sales care that actually shows up.</p>
+          <div class="footer-social">
+            <a href="#" class="icon-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" class="icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+            <a href="#" class="icon-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21l1.65-4.95A9 9 0 1112 21a9 9 0 01-5-1.5z"/><path d="M8.5 9c0 4 3.5 6.5 6.5 6.5.7 0 1.5-.2 1.5-1v-1.2l-2-1-.7 1c-1.3-.5-2.3-1.5-2.8-2.8l1-.7-1-2H9.5c-.6 0-1 .4-1 1z"/></svg></a>
+            <a href="#" class="icon-btn" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <h4 class="footer-heading" data-i18n="common.footerQuickLinks">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="gallery.html" data-i18n="nav.instruments">Instruments</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav">
+          <h4 class="footer-heading" data-i18n="common.footerInstruments">Instruments</h4>
+          <ul class="footer-links">
+            <li><a href="gallery.html#guitar" data-i18n="home.catGuitars">Guitars</a></li>
+            <li><a href="gallery.html#wind" data-i18n="home.catKeyboards">Wind Instruments</a></li>
+            <li><a href="gallery.html#violin" data-i18n="home.catViolins">Violins</a></li>
+            <li><a href="gallery.html#tabla" data-i18n="home.catTabla">Tabla</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h4 class="footer-heading" data-i18n="common.footerNewsletter">Stay in Tune</h4>
+          <p class="newsletter-note" data-i18n="common.footerNewsletterNote">New arrivals and workshop dates, once or twice a month. No spam.</p>
+          <form id="newsletter-form" novalidate>
+            <label for="newsletter-email" class="visually-hidden">Email address</label>
+            <input type="email" id="newsletter-email" required data-i18n-placeholder="common.newsletterPlaceholder" placeholder="Your email address" />
+            <button type="submit" class="btn btn-primary" data-i18n="common.newsletterBtn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="footer-year"></span> <span data-i18n="nav.brand">Kannan Musical Mart</span>. <span data-i18n="common.footerRights">All rights reserved.</span></span>
+        <div class="footer-bottom-links">
+          <a href="#" data-i18n="common.footerPrivacy">Privacy Policy</a>
+          <a href="#" data-i18n="common.footerTerms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="icon-btn scroll-top-btn" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <script src="translations.js"></script>
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+  <script src="generated_inventory.js"></script>
+  <script src="instruments-catalog.js"></script>
+  <script>
+    document.getElementById("footer-year").textContent = new Date().getFullYear();
+    document.getElementById("newsletter-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      window.KMM_TOAST && window.KMM_TOAST({ type: "success", title: "Subscribed!", message: "You're on the list for new arrivals and workshop updates." });
+      this.reset();
+    });
+
+    // Product filter tabs
+    (function () {
+      const tabs = document.querySelectorAll(".filter-tab");
+      const cards = document.querySelectorAll(".product-card");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => {
+            t.classList.remove("is-active");
+            t.setAttribute("aria-selected", "false");
+          });
+          tab.classList.add("is-active");
+          tab.setAttribute("aria-selected", "true");
+
+          const filter = tab.getAttribute("data-filter");
+          cards.forEach((card) => {
+            const matches = filter === "all" || card.getAttribute("data-category") === filter;
+            card.classList.toggle("is-hidden", !matches);
+          });
+        });
+      });
+    })();
+  </script>
+  <!-- ============ MOBILE BOTTOM STICKY NAV ============ -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="index.html" class="mobile-bottom-link">
+      <span class="nav-icon">🏠</span>
+      <span data-i18n="nav.home">Home</span>
+    </a>
+    <a href="about.html" class="mobile-bottom-link">
+      <span class="nav-icon">ℹ️</span>
+      <span data-i18n="nav.about">About</span>
+    </a>
+    <a href="gallery.html" class="mobile-bottom-link">
+      <span class="nav-icon">🎸</span>
+      <span data-i18n="nav.instruments">Instruments</span>
+    </a>
+    <a href="contact.html" class="mobile-bottom-link">
+      <span class="nav-icon">📞</span>
+      <span data-i18n="nav.contact">Contact</span>
+    </a>
+  </nav>
+
+</body>
+</html>

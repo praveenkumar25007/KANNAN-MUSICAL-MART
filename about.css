@@ -1,0 +1,338 @@
+/* ==========================================================================
+   ABOUT PAGE
+   ========================================================================== */
+
+.page-hero {
+  padding-top: calc(var(--nav-height) + var(--sp-xl));
+  padding-bottom: var(--sp-xl);
+  text-align: center;
+  position: relative;
+}
+
+.page-hero h1 {
+  font-size: clamp(var(--fs-2xl), 5vw, var(--fs-4xl));
+  color: var(--ivory);
+  max-width: 20ch;
+  margin-inline: auto;
+  margin-top: var(--sp-sm);
+}
+
+.page-hero .eyebrow {
+  justify-content: center;
+}
+
+/* ---- Intro ---- */
+.intro-section {
+  padding-block: var(--sp-xl);
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--sp-xl);
+  align-items: center;
+}
+
+.intro-media {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--glass-border);
+}
+
+.intro-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.intro-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(139, 30, 46, 0.18), transparent 60%);
+}
+
+.intro-text p {
+  color: var(--ivory-dim);
+  font-size: var(--fs-md);
+  line-height: 1.75;
+}
+
+/* ---- Story ---- */
+.story-section {
+  padding-block: var(--sp-xl);
+}
+
+.story-content {
+  max-width: 780px;
+}
+
+.story-content p {
+  color: var(--ivory-dim);
+  font-size: var(--fs-md);
+  line-height: 1.8;
+  margin-bottom: var(--sp-sm);
+}
+
+/* ---- Mission / Vision ---- */
+.mv-section {
+  padding-block: var(--sp-xl);
+}
+
+.mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-md);
+}
+
+.mv-card {
+  padding: var(--sp-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.mv-card.mission {
+  border-color: var(--glass-border);
+}
+
+.mv-card.vision::before,
+.mv-card.mission::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: -1;
+}
+
+.mv-card.mission::before {
+  background: rgba(201, 162, 75, 0.25);
+}
+
+.mv-card.vision::before {
+  background: rgba(139, 30, 46, 0.3);
+}
+
+.mv-label {
+  font-family: var(--font-body);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: var(--sp-sm);
+}
+
+.mv-card.vision .mv-label {
+  color: var(--varnish-red-bright);
+}
+
+.mv-card p {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-style: italic;
+  color: var(--ivory);
+  line-height: 1.4;
+}
+
+/* ---- Core values ---- */
+.values-section {
+  padding-block: var(--sp-xl);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-md);
+}
+
+.value-card {
+  padding: var(--sp-md);
+  text-align: center;
+}
+
+.value-icon {
+  width: 52px;
+  height: 52px;
+  margin-inline: auto;
+  border-radius: 50%;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--sp-sm);
+  transition: transform var(--dur-med) var(--ease-out-soft);
+}
+
+.value-card:hover .value-icon {
+  transform: scale(1.12);
+  border-color: var(--brass);
+}
+
+.value-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--brass);
+}
+
+.value-card h3 {
+  font-size: var(--fs-md);
+  color: var(--ivory);
+  margin-bottom: 0.4rem;
+}
+
+.value-card p {
+  font-size: var(--fs-xs);
+  color: var(--ivory-faint);
+}
+
+/* ---- Timeline ---- */
+.timeline-section {
+  padding-block: var(--sp-xl) var(--sp-2xl);
+}
+
+.timeline {
+  position: relative;
+  max-width: 760px;
+  margin-inline: auto;
+  padding-left: var(--sp-lg);
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--brass), var(--varnish-red) 60%, transparent);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: var(--sp-lg);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: calc(-1 * var(--sp-lg) + 1px);
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--stage-black);
+  border: 3px solid var(--brass);
+  box-shadow: 0 0 0 4px var(--stage-black);
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+  border-color: var(--varnish-red-bright);
+}
+
+.timeline-card {
+  padding: var(--sp-md);
+}
+
+.timeline-card h3 {
+  font-size: var(--fs-lg);
+  color: var(--ivory);
+  margin-bottom: 0.4rem;
+}
+
+.timeline-card p {
+  color: var(--ivory-dim);
+  font-size: var(--fs-sm);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+  }
+  .intro-media {
+    max-width: 420px;
+    margin-inline: auto;
+  }
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .page-hero h1 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .mv-grid {
+    grid-template-columns: 1fr;
+  }
+  .page-hero {
+    padding-top: calc(var(--nav-height-scrolled) + var(--sp-md));
+    padding-bottom: var(--sp-md);
+  }
+  .page-hero h1 {
+    font-size: clamp(var(--fs-xl), 4vw, var(--fs-2xl));
+  }
+  .intro-section {
+    padding-block: var(--sp-md);
+  }
+  .intro-grid {
+    gap: var(--sp-md);
+  }
+  .intro-text p {
+    font-size: var(--fs-base);
+  }
+  .story-section {
+    padding-block: var(--sp-md);
+  }
+  .story-content p {
+    font-size: var(--fs-base);
+  }
+  .values-grid {
+    gap: var(--sp-sm);
+  }
+  .value-card {
+    padding: var(--sp-sm);
+  }
+}
+
+@media (max-width: 520px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  .timeline {
+    padding-left: var(--sp-md);
+  }
+  .timeline-dot {
+    left: calc(-1 * var(--sp-md) + 1px);
+  }
+  .page-hero h1 {
+    font-size: clamp(var(--fs-lg), 3.5vw, var(--fs-xl));
+  }
+  .intro-media {
+    aspect-ratio: auto;
+    max-width: 100%;
+  }
+  .mv-card p {
+    font-size: var(--fs-base);
+  }
+  .highlights-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-sm);
+  }
+  .highlight-card {
+    padding: var(--sp-sm) !important;
+  }
+}
