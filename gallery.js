@@ -11,6 +11,33 @@
   "use strict";
 
   /* =========================================================
+     0. GITHUB LFS BASE URL
+     Images are tracked via Git LFS. Use GitHub's raw media CDN
+     so images load correctly both locally and on GitHub Pages.
+     ========================================================= */
+  // Image src paths in INSTRUMENTS already include "Gallery/" prefix,
+  // so GH_BASE is empty — images load relatively from the project root.
+  const GH_BASE = "";
+
+
+  /* =========================================================
+     CATEGORY-SPECIFIC FALLBACK IMAGES
+     These show when a GitHub LFS image fails to load,
+     so each instrument type shows a relevant placeholder.
+     ========================================================= */
+  const CAT_FALLBACKS = {
+    harmonium: "https://images.unsplash.com/photo-1621368286550-f54551f39b91?q=80&w=600&auto=format&fit=crop",
+    flute:     "https://images.unsplash.com/photo-1621368286547-3fb2f4d1ea5d?q=80&w=600&auto=format&fit=crop",
+    string:    "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=600&auto=format&fit=crop",
+    drums:     "https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?q=80&w=600&auto=format&fit=crop",
+    folk:      "https://images.unsplash.com/photo-1583225214464-9296029427aa?q=80&w=600&auto=format&fit=crop",
+    temple:    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=600&auto=format&fit=crop",
+    wind:      "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&auto=format&fit=crop",
+    store:     "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=600&auto=format&fit=crop"
+  };
+  const DEFAULT_FALLBACK = "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&auto=format&fit=crop";
+
+  /* =========================================================
      1. INSTRUMENT DATA — All 198 images from Gallery folder
      ========================================================= */
   const INSTRUMENTS = [
@@ -31,7 +58,7 @@
     { src: "Gallery/Flute-8-HolesC-Sharp.jpg",            name: "Flute 8 Holes C Sharp",            cat: "flute" },
     { src: "Gallery/Flute-8holes-Karnatic-Scale2.5.jpg",  name: "Flute 8 Holes Karnatic Scale 2.5", cat: "flute" },
     { src: "Gallery/Flute-8holes-Karnatic-Scale4.jpg",    name: "Flute 8 Holes Karnatic Scale 4",   cat: "flute" },
-    { src: "Gallery/Flute6-Hole.jpg",                     name: "Flute 6 Hole",                     cat: "flute" },
+    { src: "Gallery/Flute6-Hole.jpg",                     name: "Flute 6 Hole",                   cat: "flute" },
     { src: "Gallery/Flutes.jpg",                          name: "Flutes Collection",                 cat: "flute" },
 
     /* --- Strings / Guitar / Violin --- */
@@ -254,8 +281,8 @@
     { src: "Gallery/Leg-Chalangai-3-Rows.jpg",                 name: "Leg Chalangai 3 Rows",           cat: "folk" },
 
     /* --- Store Showroom --- */
-    { src: "Gallery/WhatsApp Image 2026-08-05 at 10.55.47 PM.jpeg", name: "Store Display – 1",  cat: "store" },
-    { src: "Gallery/WhatsApp Image 2026-08-05 at 10.55.47 PM (1).jpeg", name: "Store Display – 2",  cat: "store" },
+    { src: "Gallery/WhatsApp%20Image%202026-08-05%20at%2010.55.47%20PM.jpeg",      name: "Store Display – 1",  cat: "store" },
+    { src: "Gallery/WhatsApp%20Image%202026-08-05%20at%2010.55.47%20PM%20%281%29.jpeg", name: "Store Display – 2",  cat: "store" },
     { src: "Gallery/showroom1.png",         name: "Store Showroom View",cat: "store" },
   ];
 
@@ -339,13 +366,17 @@
       card.setAttribute("aria-label", `Open ${item.name}`);
       card.dataset.index = idx;
 
+      const imgSrc = item.src.startsWith("http") ? item.src : GH_BASE + item.src;
+      // Use category-specific fallback so every card shows a DIFFERENT relevant image
+      const fallbackSrc = CAT_FALLBACKS[item.cat] || DEFAULT_FALLBACK;
       card.innerHTML = `
         <div class="gallery-card-img-wrap">
           <img
             class="gallery-card-img"
-            src="${item.src}"
+            src="${imgSrc}"
             alt="${item.name}"
             loading="lazy"
+            onerror="this.onerror=null;this.src='${fallbackSrc}';"
           />
           <div class="gallery-card-overlay">
             <span class="gallery-card-zoom">&#128269; View</span>
@@ -422,7 +453,8 @@
 
   function updateLightbox() {
     const item = filteredItems[lbIndex];
-    lbImg.src = item.src;
+    const imgSrc = item.src.startsWith("http") ? item.src : GH_BASE + item.src;
+    lbImg.src = imgSrc;
     lbImg.alt = item.name;
     lbCaption.textContent = item.name;
     lbCounter.textContent = `${lbIndex + 1} / ${filteredItems.length}`;
@@ -634,3 +666,4 @@
   buildGrid();
 
 })();
+  

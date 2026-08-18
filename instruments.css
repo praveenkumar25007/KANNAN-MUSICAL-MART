@@ -7,7 +7,8 @@
   text-align: center;
 }
 
-.instruments-intro h1 {
+.instruments-intro h1,
+.instruments-intro h2 {
   font-size: clamp(var(--fs-2xl), 5vw, var(--fs-4xl));
   color: var(--ivory);
   max-width: 22ch;
@@ -480,13 +481,28 @@ mark.search-highlight {
     overflow-x: auto;
     flex-wrap: nowrap;
     padding-inline: var(--sp-md);
-    margin-inline: calc(-1 * var(--sp-md));
+    gap: 0.5rem;
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    /* Hide scrollbar across browsers */
+    scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* IE / Edge */
+  }
+  .filter-bar::-webkit-scrollbar {
+    display: none;                  /* Chrome, Safari, Opera */
+  }
+  /* Ensure last tab isn't clipped by adding pseudo-element padding */
+  .filter-bar::after {
+    content: "";
+    flex-shrink: 0;
+    width: var(--sp-md);
   }
   .filter-tab {
     flex-shrink: 0;
     padding: 0.5rem 1rem;
     font-size: var(--fs-2xs);
+    white-space: nowrap;
+    scroll-snap-align: start;
   }
   .instruments-intro {
     padding-block: var(--sp-md) var(--sp-sm);
@@ -501,6 +517,37 @@ mark.search-highlight {
   .hero-search-box {
     padding: 0.7rem 1rem;
     font-size: var(--fs-sm);
+  }
+  .hero-search-box input {
+    font-size: 16px; /* Prevent iOS zoom on focus */
+  }
+  .search-kbd-badge {
+    display: none; /* Keyboard shortcut badge is irrelevant on mobile */
+  }
+  .hero-search-pills {
+    gap: 0.4rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hero-search-pills::-webkit-scrollbar {
+    display: none;
+  }
+  .hero-search-pills::after {
+    content: "";
+    flex-shrink: 0;
+    width: var(--sp-sm);
+  }
+  .pills-label {
+    flex-shrink: 0;
+  }
+  .search-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
   }
   .inventory-toolbar {
     gap: var(--sp-xs);
@@ -540,8 +587,4 @@ mark.search-highlight {
   .empty-state-card {
     padding: var(--sp-sm);
   }
-  .hero-search-pills {
-    gap: 0.35rem;
-  }
-}
 }
