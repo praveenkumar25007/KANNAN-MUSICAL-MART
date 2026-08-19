@@ -3,7 +3,8 @@
    ========================================================================== */
 
 .instruments-intro {
-  padding-block: var(--sp-xl) var(--sp-md);
+  padding-top: calc(var(--nav-height) + var(--sp-lg));
+  padding-bottom: var(--sp-md);
   text-align: center;
 }
 

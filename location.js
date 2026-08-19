@@ -10,7 +10,7 @@ const KMM_STORE_LOCATION = {
   addressLine: "New No. 274, Old No. 380, Mint Street",
   city: "Sowcarpet",
   state: "Chennai",
-  postalCode: "600001",
+  postalCode: "600079",
   country: "India",
   lat: 13.0916,
   lng: 80.2868,
